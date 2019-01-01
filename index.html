@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+	<title>SIUM | Unidad Meteorologica</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="SISTEMA INFORMÁTICO DE ALMACENAMIENTO Y CONSULTA DE DATOS DE LA UNIDAD METEOROLÓGICA UBICADA EN EL INSTITUTO TECNOLÓGICO SUPERIOR ORIENTE" name="description" />
+	<meta content="QUINTERO BONILLA GABRIELA LIZBETH" name="author" />
+
+	<!-- ================== BEGIN BASE CSS STYLE ================== -->
+	<!--<link rel="shortcut icon" type="image/x-icon" href="img/sium-logo.ico" />-->
+	<link rel="icon" type="image/x-icon" href="img/sium-logo.png" />
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<link href="plugins/jquery-ui/themes/base/minified/jquery-ui.min.css" rel="stylesheet" />
+	<link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="css/animate.min.css" rel="stylesheet" />
+	<link href="css/style.min.css" rel="stylesheet" />
+	<link href="css/style-responsive.min.css" rel="stylesheet" />
+	<link href="css/theme/default.css" rel="stylesheet" id="theme" />
+	<!-- ================== END BASE CSS STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL STYLE ================== -->
+	<link href="plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+	<link href="plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+	<!-- ================== END PAGE LEVEL STYLE ================== -->
+
+	<!-- ================== BEGIN PAGE DATEPICKER STYLE ================== -->
+	<link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css" rel="stylesheet" />
+	<link href="plugins/ionRangeSlider/css/ion.rangeSlider.css" rel="stylesheet" />
+	<link href="plugins/ionRangeSlider/css/ion.rangeSlider.skinNice.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css" rel="stylesheet" />
+	<link href="plugins/password-indicator/css/password-indicator.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-combobox/css/bootstrap-combobox.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet" />
+	<link href="plugins/jquery-tag-it/css/jquery.tagit.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" />
+	<link href="plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-eonasdan-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+	<link href="plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css" rel="stylesheet" />
+	<link href="plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.css" rel="stylesheet" />
+	<link href="plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css" rel="stylesheet" />
+	<link href="plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-glyphicons.css" rel="stylesheet" />
+	<!-- ================== END PAGE DATEPICKER STYLE ================== -->
+
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="plugins/pace/pace.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+</head>
+
+<body>
+	<!-- begin #page-loader -->
+	<div id="page-loader" class="fade in"><span class="spinner"></span></div>
+	<!-- end #page-loader -->
+
+	<!-- begin #page-container -->
+	<div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+		<!-- begin #header -->
+		<div id="header" class="header navbar navbar-default navbar-fixed-top">
+			<!-- begin container-fluid -->
+			<div class="container-fluid">
+				<!-- begin mobile sidebar expand / collapse button -->
+				<div class="navbar-header">
+					<a href="index.html" class="navbar-brand">
+						<ul class="nav navbar-nav navbar-left in_header">
+							<li>Sistema Informático de Unidad Meteorologica</li>
+						</ul>
+					</a>
+				</div>
+				<!-- end mobile sidebar expand / collapse button -->
+
+				<!-- begin header navigation right -->
+				<ul class="nav navbar-nav navbar-right">
+
+					<li class="dropdown navbar-user">
+						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="img/sium-logo.png" alt="" />
+							<span class="hidden-xs">Iniciar Sesión</span> <b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu animated fadeInLeft">
+							<li class="arrow"></li>
+							<li><a href="javascript:;"><input type="text" class="form-control" placeholder="Usuario" id="username" /></a></li>
+							<li><a href="javascript:;"><input type="password" class="form-control" placeholder="Contraseña" id="password" /></a></li>
+							<li><a href="javascript:;"><button type="button" class="btn btn-success btn-xs m-r-5 m-b-5" id="clickIngresar">Ingresar</button></a></li>
+							<!--<li class="divider"></li>
+							<li><a href="javascript:;">Log Out</a></li>	-->
+						</ul>
+					</li>
+				</ul>
+				<!-- end header navigation right -->
+			</div>
+			<!-- end container-fluid -->
+		</div>
+		<!-- end #header -->
+
+		<!-- begin #sidebar -->
+		<div id="sidebar" class="sidebar">
+			<!-- begin sidebar scrollbar -->
+			<div data-scrollbar="true" data-height="100%">
+				<!-- begin sidebar user -->
+				<ul class="nav">
+					<li class="nav-profile">
+						<div class="image">
+							<a href="javascript:;"><img src="img/itso.jpg" alt="" /></a>
+						</div>
+						<div class="info titulo">
+							ITSO
+							<small>Instituto Tecnológico Superior del Oriente</small>
+						</div>
+					</li>
+				</ul>
+				<!-- end sidebar user -->
+				<!-- begin sidebar nav -->
+				<ul class="nav">
+					<!--<li class="nav-header">Navegación</li>
+					<li class="has-sub active">
+						<a href="javascript:;">
+							<b class="caret pull-right"></b>
+							<i class="fa fa-laptop"></i>
+							<span>Dashboard</span>
+						</a>
+						<ul class="sub-menu">
+							<li class="active"><a href="index.html">Dashboard v1</a></li>
+							<li><a href="index_v2.html">Dashboard v2</a></li>
+						</ul>
+					</li>-->
+
+					<!-- begin sidebar minify button -->
+					<li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+					<!-- end sidebar minify button -->
+				</ul>
+				<!-- end sidebar nav -->
+			</div>
+			<!-- end sidebar scrollbar -->
+		</div>
+		<div class="sidebar-bg"></div>
+		<!-- end #sidebar -->
+
+		<!-- begin #content -->
+		<div id="content" class="content">
+
+			<!-- begin page-header -->
+			<ol class="breadcrumb pull-right">
+				<h1 class="page-header">Dashboard <small>header small text goes here...</small></h1>
+			</ol>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="input-group">
+						<input type="text" class="form-control" id="datepicker-autoClose" placeholder="Elija la Fecha" />
+						<span class="input-group-btn">
+							<button class="btn btn-danger" type="button" onclick="buscarPorFecha()"><i class="fa fa-search"></i></button>
+						</span>
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button class="btn btn-success" type="button" onclick="iniciarRefresh()">Situación Actual</button>
+				</div>
+			</div>
+			<!-- end page-header -->
+
+			<!-- begin row -->
+			<div class="row">
+				<!-- begin col-8 -->
+				<div class="col-md-6">
+					<div class="panel panel-inverse" data-sortable-id="index-1">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Temperatura</h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-6 col-sm-6">
+								<div class="widget widget-stats bg-green">
+									<div class="stats-icon"><i class="fa fa-sort-asc"></i></div>
+									<div class="stats-info">
+										<h4>Temperatura Ambiente Máxima</h4>
+										<p id="hi_temp">0</p>
+									</div>
+									<div class="stats-link">
+										<a href="javascript:;">Registrada en el Período</a>
+									</div>
+								</div>
+							</div>
+							<!-- end col-3 -->
+
+							<!-- begin col-3 -->
+							<div class="col-md-6 col-sm-6">
+								<div class="widget widget-stats bg-green">
+									<div class="stats-icon"><i class="fa fa-sort-desc"></i></div>
+									<div class="stats-info">
+										<h4>Temperatura Ambiente Minima</h4>
+										<p id="low_temp">0</p>
+									</div>
+									<div class="stats-link">
+										<a href="javascript:;">Registrada en el Periodo</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-Temperatura" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-20">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Radiación Ultravioleta </h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-6 col-sm-6">
+								<div class="widget widget-stats bg-green">
+									<div class="stats-icon"><i class="fa fa-sort-asc"></i></div>
+									<div class="stats-info">
+										<h4>Intensidad de Radiación UV Máxima</h4>
+										<p id="hi_uv">0</p>
+									</div>
+									<div class="stats-link">
+										<a href="javascript:;">Registrada en el Período</a>
+									</div>
+								</div>
+							</div>
+							<!-- end col-3 -->
+
+							<!-- begin col-3 -->
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-uv" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-18">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Punto de Rocio </h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-dew-pt" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-13">
+							<div class="panel-heading">
+								<div class="panel-heading-btn">
+									<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+								</div>
+								<h4 class="panel-title">Indice THW y THWS </h4>
+							</div>
+							<div class="panel-body">
+								<!-- begin col-3 -->
+								<div class="col-md-12 col-sm-12">
+									<canvas id="line-chart-thw" data-render="chart-js"></canvas>
+								</div>
+								<!-- end col-3 -->
+							</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-12">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Llubia </h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-rain" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-11">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Enfriamiento Requerido </h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-cooldd" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+						
+
+				</div>
+				<!-- end col-8 -->
+				<!-- begin col-4 -->
+				<div class="col-md-6">
+					<div class="panel panel-inverse" data-sortable-id="index-17">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Información Solar</h4>
+						</div>
+						<div class="panel-body">
+							<!-- begin col-3 -->
+							<div class="col-md-6 col-sm-6">
+								<div class="widget widget-stats bg-green">
+									<div class="stats-icon"><i class="fa fa-sort-asc"></i></div>
+									<div class="stats-info">
+										<h4>Radiación solar máxima</h4>
+										<p id="hi_solar_rad">0</p>
+									</div>
+									<div class="stats-link">
+										<a href="javascript:;">Alcanzada en el período</a>
+									</div>
+								</div>
+							</div>
+							<!-- end col-3 -->
+
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-solar" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-19">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Humedad</h4>
+						</div>
+						<div class="panel-body">
+
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-humedad" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-15">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Información del Viento</h4>
+						</div>
+						<div class="panel-body">
+								<div class="col-md-6 col-sm-6">
+									<div class="widget widget-stats bg-green">
+										<div class="stats-icon"><i class="fa fa-paper-plane"></i></div>
+										<div class="stats-info">
+											<h4>Dirección del Viento</h4>
+											<p id="wind_dir">---</p>
+										</div>
+										<div class="stats-link">
+											<a href="javascript:;"></a>
+										</div>
+									</div>
+								</div>
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-wind" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-14">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Indice de temperatura y la humedad</h4>
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-heat" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+					<div class="panel panel-inverse" data-sortable-id="index-14">
+						<div class="panel-heading">
+							<div class="panel-heading-btn">
+								<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+							</div>
+							<h4 class="panel-title">Presión atmosférica</h4>
+						</div>
+						<div class="panel-body">
+							<div class="col-md-12 col-sm-12">
+								<canvas id="line-chart-bar" data-render="chart-js"></canvas>
+							</div>
+							<!-- end col-3 -->
+						</div>
+					</div>
+
+						<div class="panel panel-inverse" data-sortable-id="index-14">
+							<div class="panel-heading">
+								<div class="panel-heading-btn">
+									<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+								</div>
+								<h4 class="panel-title">La evapotranspiración</h4>
+							</div>
+							<div class="panel-body">
+								<div class="col-md-12 col-sm-12">
+									<canvas id="line-chart-et" data-render="chart-js"></canvas>
+								</div>
+								<!-- end col-3 -->
+							</div>
+						</div>
+
+				</div>
+				<!-- end col-4 -->
+			</div>
+			<!-- end row -->
+		</div>
+		<!-- end #content -->
+
+		<!-- begin scroll to top btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+			 class="fa fa-angle-up"></i></a>
+		<!-- end scroll to top btn -->
+	</div>
+	<!-- end page container -->
+
+	<!-- ================== 	BEGIN BASE JS ================== -->
+	<script src="plugins/jquery/jquery-1.9.1.min.js"></script>
+	<script src="plugins/jquery/jquery-migrate-1.1.0.min.js"></script>
+	<script src="plugins/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+	<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+	<!--[if lt IE 9]>
+		<script src="crossbrowserjs/html5shiv.js"></script>
+		<script src="crossbrowserjs/respond.min.js"></script>
+		<script src="crossbrowserjs/excanvas.min.js"></script>
+	<![endif]-->
+	<script src="plugins/slimscroll/jquery.slimscroll.min.js"></script>
+	<script src="plugins/jquery-cookie/jquery.cookie.js"></script>
+	<script src="plugins/chart-js/Chart.min.js"></script>
+	<script src="js/chart-js.demo.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+
+	<!-- ================== BEGIN PAGE DATEPICKER JS ================== -->
+	<script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="plugins/ionRangeSlider/js/ion-rangeSlider/ion.rangeSlider.min.js"></script>
+	<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+	<script src="plugins/masked-input/masked-input.min.js"></script>
+	<script src="plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js"></script>
+	<script src="plugins/password-indicator/js/password-indicator.js"></script>
+	<script src="plugins/bootstrap-combobox/js/bootstrap-combobox.js"></script>
+	<script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+	<script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+	<script src="plugins/bootstrap-tagsinput/bootstrap-tagsinput-typeahead.js"></script>
+	<script src="plugins/jquery-tag-it/js/tag-it.min.js"></script>
+	<script src="plugins/bootstrap-daterangepicker/moment.js"></script>
+	<script src="plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="plugins/select2/dist/js/select2.min.js"></script>
+	<script src="plugins/bootstrap-eonasdan-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+	<script src="plugins/bootstrap-show-password/bootstrap-show-password.js"></script>
+	<script src="plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+	<script src="plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.js"></script>
+	<script src="js/form-plugins.demo.min.js"></script>
+	<!-- ================== END PAGE DATEPICKER JS ================== -->
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="plugins/gritter/js/jquery.gritter.js"></script>
+	<script src="plugins/flot/jquery.flot.min.js"></script>
+	<script src="plugins/flot/jquery.flot.time.min.js"></script>
+	<script src="plugins/flot/jquery.flot.resize.min.js"></script>
+	<script src="plugins/flot/jquery.flot.pie.min.js"></script>
+	<script src="plugins/sparkline/jquery.sparkline.js"></script>
+	<script src="plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+	<script src="plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="js/dashboard.min.js"></script>
+	<script src="js/apps.min.js"></script>
+	<script src="js/datos-unidad.js"></script>
+	<script src="js/index.js"></script>
+	<!-- ================== END PAGE LEVEL JS =	================= -->
+
+
+
+	<script>
+		$(document).ready(function () {
+			App.init();
+			FormPlugins.init();
+			iniciarRefresh();
+		});
+	</script>
+
+</body>
+
+</html>
