@@ -5,7 +5,7 @@ require_once('ws/conecta.php');
 //LECTURA DEL ARCHIVO
 //http://galliguera.net/DatosClima/EXPLICACION_VARIABLES.html
 
-	$fp = fopen("C:\WeatherLink\davison\download1.txt", "r");	
+	$fp = fopen("C:\WeatherLink\davison\download.txt", "r");	
 	$cont =0;
 	$arrayLineaAll=array();
 
@@ -77,7 +77,7 @@ require_once('ws/conecta.php');
 		$cool_dd=$arrayLineaAll[$i][26]=="---" ? "0" : $arrayLineaAll[$i][26] ;//double(10,3) Cooling Degree-Days. Es el monto de enfriamiento requerido
 
 		$thsw_index=$arrayLineaAll[$i][15]; //varchar(10) THSW (temperatura - humedad - sol - viento)
-		$bar=$arrayLineaAll[$i][16]=="---" ? "0" : $arrayLineaAll[$i][16] ;//double(10,3) Presión atmosférica. El peso del aire de nuestra atmósfera
+		$bar=$arrayLineaAll[$i][16]=="------" ? "0" : $arrayLineaAll[$i][16] ;//double(10,3) Presión atmosférica. El peso del aire de nuestra atmósfera
 
 		$rain=$arrayLineaAll[$i][17]=="---" ? "0" : $arrayLineaAll[$i][17] ;//double(10,2) Rain: Cantidad de lluvia, dada en milimetro
 		$rain_rate=$arrayLineaAll[$i][18]=="---" ? "0" : $arrayLineaAll[$i][18] ; //double(10,2) Rain Rate: Intensidad de la lluvia, dada en mm/hora.
@@ -104,7 +104,7 @@ require_once('ws/conecta.php');
 		$arc_int=$arrayLineaAll[$i][48]=="---" ? "0" : $arrayLineaAll[$i][48] ;//------NO int(11)
 		//FIN CONVERSION FECHA
 
-		$query_datos = "select id_datos from vta_datos where date='".$fecha."' and time='".$hora."' limit 5 ";		
+		$query_datos = "select id_datos from vta_datos where date='".$fecha."' and time='".$hora."' limit 5;";		
 		$datos = mysqli_query($conecta,$query_datos) or die(mysqli_error($conecta));
 		$totalRows = mysqli_num_rows($datos);
 		if($totalRows==0){
@@ -128,6 +128,7 @@ require_once('ws/conecta.php');
 				echo "Guardado Correctamente:".$query;
 			}else{
 				echo $query_datos."<br>";
+				echo $query;
 				echo mysqli_error($conecta);
 			}
 			echo "<br><br>";
